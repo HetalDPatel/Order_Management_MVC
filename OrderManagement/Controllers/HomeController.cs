@@ -20,7 +20,7 @@ namespace OrderManagement.Controllers
             Order order = new Order();
 
             //Fetching data from database
-            var list = order.GetOrders();
+            var list = order.GetOrders().ToList();
             
             var ord = order.GetOrder(1).Map();
 
@@ -67,7 +67,7 @@ namespace OrderManagement.Controllers
 
 
 
-            return View();
+            return View(list);
         }
 
         public ActionResult About()

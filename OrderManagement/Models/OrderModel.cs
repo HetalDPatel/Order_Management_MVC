@@ -10,6 +10,7 @@ namespace OrderManagement.Models
         public int OrderId { get; set; }
         public string OrderNumber { get; set; }
         public string Customer_Name { get; set; }
+
         public string Order_Date { get; set; }
         public string Item { get; set; }
         public Decimal Price { get; set; }
