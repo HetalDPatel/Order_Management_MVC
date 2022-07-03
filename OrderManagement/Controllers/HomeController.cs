@@ -20,54 +20,11 @@ namespace OrderManagement.Controllers
             Order order = new Order();
 
             //Fetching data from database
-            var list = order.GetOrders().ToList();
+            var orderList = order.GetOrders().ToList();
             
-            var ord = order.GetOrder(1).Map();
+           // var ord = order.GetOrder(1).Map();
 
-
-            // int i = 0;
-
-            // i.GetDescription();
-
-            // ord.OrderStatus.GetDescription();
-
-
-
-            //SqlConnection sqlConnection = new SqlConnection(order.ConnectionString);
-
-
-            //sqlConnection.Open();
-            //SqlTransaction transaction = sqlConnection.BeginTransaction();
-
-
-            //Order payment1 = new Order(transaction);
-
-            //try
-            //{
-            //    //send invoice
-            //    //create order
-            //    //payment 
-            //    order.GetOrders(transaction);
-
-
-
-
-            //    transaction.Commit();
-            //}
-            //catch (Exception ex)
-            //{
-            //    transaction.Rollback();
-            //}
-            //finally
-            //{
-            //    sqlConnection.Close();
-            //}
-
-
-
-
-
-            return View(list);
+            return View(orderList);
         }
 
         public ActionResult About()
