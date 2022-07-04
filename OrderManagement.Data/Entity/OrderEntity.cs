@@ -20,7 +20,8 @@ namespace OrderManagement.Data.Entity
         public int AddressId { get; set; }
         public virtual AddressEntity AddressItem { get; set; }
 
-        public OrderEntity(string orderNumber, string name,string date,string item, decimal price, int qty,string status, AddressEntity adressItem) {
+        public OrderEntity(int id,string orderNumber, string name,string date,string item, decimal price, int qty,string status, AddressEntity adressItem) {
+            OrderId = id;
             OrderNumber = orderNumber;
             Customer_Name = name;
             Order_Date = date;

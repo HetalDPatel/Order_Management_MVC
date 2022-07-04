@@ -18,8 +18,9 @@ namespace OrderManagement.Models
         public string OrderStatus { get; set; }
         public int AddressId { get; set; }
         public AddressModel Address { get; set; }
-        public OrderModel(string orderNumber, string name, string date, string item, decimal price, int qty, string status, AddressModel address)
+        public OrderModel(int id,string orderNumber, string name, string date, string item, decimal price, int qty, string status, AddressModel address)
         {
+            OrderId = id;
             OrderNumber = orderNumber;
             Customer_Name = name;
             Order_Date = date;
