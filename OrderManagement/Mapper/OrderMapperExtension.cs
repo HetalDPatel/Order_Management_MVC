@@ -13,6 +13,7 @@ namespace OrderManagement.Mapper
         {
             return new OrderModel()
             {
+                OrderId=model.OrderId,
                 OrderNumber = model.OrderNumber,
                 Customer_Name = model.Customer_Name,   
                 Order_Date=model.Order_Date,
