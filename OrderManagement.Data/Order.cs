@@ -114,7 +114,7 @@ namespace OrderManagement.Data
                 sqlConnection.Close();
             }
 
-                GetOrders();
+            GetOrders();
         }
     }
 

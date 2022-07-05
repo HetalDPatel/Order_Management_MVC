@@ -78,7 +78,7 @@ namespace OrderManagement.Controllers
         public ActionResult Delete(int id)
         {
             var ord = order.GetOrder(id);
-            return View();
+            return View(ord);
         }
 
         // POST: Orders/Delete/5
