@@ -77,6 +77,7 @@ namespace OrderManagement.Controllers
         // GET: Orders/Delete/5
         public ActionResult Delete(int id)
         {
+            var ord = order.GetOrder(id);
             return View();
         }
 
@@ -86,6 +87,7 @@ namespace OrderManagement.Controllers
         {
             try
             {
+                order.DeleteOrder(id);
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");

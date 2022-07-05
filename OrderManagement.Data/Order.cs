@@ -11,13 +11,15 @@ namespace OrderManagement.Data
     public class Order : DataObject
     {
         public List<OrderEntity> orderList = new List<OrderEntity>();
-        
+        SqlConnection sqlConnection;
+
+
         AddressEntity addEntity = new AddressEntity();
 
         public Order() : base(null)
         {
             var holder = ConnectionString;
-
+            sqlConnection = new SqlConnection(ConnectionString);
         }
 
         public Order(SqlTransaction trans) : base(trans)
@@ -28,7 +30,7 @@ namespace OrderManagement.Data
         public List<OrderEntity> GetOrders()
         {
 
-            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
+            
             string query = $"select o.order_id,o.order_no as 'Order No',o.order_date as 'Order Date',o.item as 'Item Description',o.qty as Quantity ," +
                 $"o.price_per_item as Cost ,o.customer_name as 'Customer Name'," +
                 $"CONCAT('#', a.house_no, ', ', a.street, ', ', a.city, '-', a.postal_code) as Address,a.country as Country from orders o " +
@@ -96,7 +98,23 @@ namespace OrderManagement.Data
 
         public void DeleteOrder(int id)
         {
+            string query = $"delete from [MVC].[dbo].[orders] where order_id={id};";
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand cmd = new SqlCommand(query, sqlConnection);
+                SqlDataReader reader = cmd.ExecuteReader();
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
 
+                GetOrders();
         }
     }
 

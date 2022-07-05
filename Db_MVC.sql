@@ -24,7 +24,9 @@ Create table orders
 	Go
 -- Insert Data into orders
 Insert into orders values(10000,'06/29/2022','Dell intel Core i7 laptop',2,2008.97,'James Arthur',1);
-Insert into orders values(10000,'06/29/2022','Dell intel Core i7 laptop',2,2008.97,'James Arthur',1);
+Insert into orders values(20000,'06/29/2022','Dell intel Core i7 laptop',2,2008.97,'Hetal Patel',1);
+Insert into orders values(30000,'06/29/2022','Dell intel Core i7 laptop',2,2008.97,'Dana Wie',1);
+Insert into orders values(40000,'06/29/2022','Dell intel Core i7 laptop',2,2008.97,'Stephen park',1);
 --select
 
 select * from orders;
@@ -45,8 +47,4 @@ Insert into address values(1,'504','2000 Bay street','Hamilton','Canada','L8P8C4
 select * from address;
 
 
-select o.order_no as 'Order No',o.order_date as 'Order Date',o.item as 'Item Description',
-	o.qty as Quantity ,Concat(o.price_per_item,'$')as Cost ,o.customer_name as 'Customer Name',
-	CONCAT('#',a.house_no,', ',a.street) as Address,a.city as City ,a.postal_code as Postal,a.country as Country from orders o
-join address a
-on o.address_id=a.address_id;
+
