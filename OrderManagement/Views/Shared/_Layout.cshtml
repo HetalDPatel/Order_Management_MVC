@@ -16,7 +16,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Order Management", "Index", "Orders", new { area = "" }, new { @class = "navbar-brand" })
+                <nav class="navbar navbar-light bg-light">
+                    <div class="navbar-brand">
+                        <a href="@Url.Action("Index", "Orders")">
+                            <img src="~/Images/OM_logo.jpg" alt="Order Management" width="50" height="40" class="d-inline-block align-text-top" />
+                        </a>
+                    </div>
+                </nav>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
