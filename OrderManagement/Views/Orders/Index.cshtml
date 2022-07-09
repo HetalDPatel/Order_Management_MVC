@@ -9,7 +9,7 @@
 <h2>Order Management</h2>
 
 <p>
-    @Html.ActionLink("Create New Order", "Create")
+    @Html.ActionLink("Create New Order", "CreateOrder", null, new { @class = "btn btn-primary"})
 </p>
 
 <table class="table">
@@ -69,9 +69,9 @@
                 @Html.DisplayFor(modelItem => item.AddressItem.Country)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.OrderId}) |
-                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = "btn btn-primary" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }, new { @class = "btn btn-success" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

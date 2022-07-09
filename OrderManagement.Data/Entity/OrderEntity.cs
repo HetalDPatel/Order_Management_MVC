@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace OrderManagement.Data.Entity
 {
@@ -16,11 +13,12 @@ namespace OrderManagement.Data.Entity
         public Decimal Price { get; set; }
         public int Qty { get; set; }
 
-        public string Status { get; set; }
+        //public string Status { get; set; }
         public int AddressId { get; set; }
         public virtual AddressEntity AddressItem { get; set; }
 
-        public OrderEntity(int id,string orderNumber, string name,string date,string item, decimal price, int qty,string status, AddressEntity adressItem) {
+        public OrderEntity(int id, string orderNumber, string name, string date, string item, decimal price, int qty, string status, AddressEntity adressItem)
+        {
             OrderId = id;
             OrderNumber = orderNumber;
             Customer_Name = name;
@@ -28,7 +26,7 @@ namespace OrderManagement.Data.Entity
             Item = item;
             Price = price;
             Qty = qty;
-            Status = status;
+            //Status = status;
             AddressItem = adressItem;
         }
 
