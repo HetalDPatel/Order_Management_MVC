@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+</br>
 <h2>Details</h2>
 
 <div>
@@ -71,6 +72,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }, new { @class = "btn btn-primary" }) &nbsp;&nbsp;
+    @Html.ActionLink("Back to List", "Index",null , new { @class = "btn btn-primary" })
 </p>
