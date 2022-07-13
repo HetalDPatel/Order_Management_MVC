@@ -171,8 +171,11 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Delete.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Orders\CreateOrder.cshtml" />
     <Content Include="Views\Orders\CreateAddress.cshtml" />
+=======
+>>>>>>> parent of b196b37 (create new order function added)
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

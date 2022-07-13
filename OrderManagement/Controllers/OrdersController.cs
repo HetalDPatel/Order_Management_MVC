@@ -1,7 +1,8 @@
 ﻿using OrderManagement.Data;
-using OrderManagement.Data.Entity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace OrderManagement.Controllers
@@ -15,7 +16,7 @@ namespace OrderManagement.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-
+           
 
             //Fetching data from database
             var orderList = order.GetOrders().ToList();
@@ -33,8 +34,7 @@ namespace OrderManagement.Controllers
         }
 
         // GET: Orders/Create
-        [HttpGet]
-        public ActionResult CreateOrder()
+        public ActionResult Create()
         {
             return View();
         }
@@ -42,12 +42,11 @@ namespace OrderManagement.Controllers
         // POST: Orders/Create
 
         [HttpPost]
-        public ActionResult CreateOrder(OrderEntity orderEntity)
+        public ActionResult Create(FormCollection collection)
         {
-            bool IsInserted = false;
-
             try
             {
+<<<<<<< HEAD
 
                 if (ModelState.IsValid)
                 {
@@ -63,15 +62,16 @@ namespace OrderManagement.Controllers
                     }
                 }
                 //return View();
+=======
+                // TODO: Add insert logic here
+
+>>>>>>> parent of b196b37 (create new order function added)
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch
             {
-
-                TempData["ErrorMsg"] = ex.Message;
                 return View();
             }
-
         }
 
 
