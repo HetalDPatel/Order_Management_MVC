@@ -87,29 +87,33 @@ namespace OrderManagement.Data
         public bool CreateOrder(OrderEntity objOrdEntity)
         {
             int id = 0;
-            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
+            try
             {
-                SqlCommand cmd = new SqlCommand("AddNewOrder", sqlConnection);
+                SqlCommand cmd = new SqlCommand("SP_AddNewOrder", sqlConnection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@order_id", objOrdEntity.OrderId);
                 cmd.Parameters.AddWithValue("@order_no", objOrdEntity.OrderNumber);
                 cmd.Parameters.AddWithValue("@order_date", objOrdEntity.Order_Date);
                 cmd.Parameters.AddWithValue("@item", objOrdEntity.Item);
                 cmd.Parameters.AddWithValue("@qty", objOrdEntity.Qty);
                 cmd.Parameters.AddWithValue("@price_per_item", objOrdEntity.Price);
                 cmd.Parameters.AddWithValue("@customer_name", objOrdEntity.Customer_Name);
-                cmd.Parameters.AddWithValue("@address_id", objOrdEntity.AddressItem.AddressId);
-                cmd.Parameters.AddWithValue("@house_no", objOrdEntity.AddressItem.HouseNo);
-                cmd.Parameters.AddWithValue("@street", objOrdEntity.AddressItem.Street);
-                cmd.Parameters.AddWithValue("@city", objOrdEntity.AddressItem.City);
-                cmd.Parameters.AddWithValue("@cuntry", objOrdEntity.AddressItem.Country);
-                cmd.Parameters.AddWithValue("@postal_code", objOrdEntity.AddressItem.PostalCode);
+                cmd.Parameters.AddWithValue("@address_id", objOrdEntity.AddressId);
 
                 sqlConnection.Open();
                 id = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
                 sqlConnection.Close();
             }
+
             if (id > 0)
             {
                 return true;
@@ -119,6 +123,7 @@ namespace OrderManagement.Data
                 return false;
             }
         }
+
 
         public OrderEntity UpdateOrder(OrderEntity model)
         {

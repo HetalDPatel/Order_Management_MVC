@@ -9,6 +9,9 @@ namespace OrderManagement.Controllers
     public class OrdersController : Controller
     {
         Order order = new Order();
+        Address address = new Address();
+
+
         // GET: Orders
         public ActionResult Index()
         {
@@ -37,6 +40,7 @@ namespace OrderManagement.Controllers
         }
 
         // POST: Orders/Create
+
         [HttpPost]
         public ActionResult CreateOrder(OrderEntity orderEntity)
         {
@@ -44,6 +48,7 @@ namespace OrderManagement.Controllers
 
             try
             {
+
                 if (ModelState.IsValid)
                 {
                     IsInserted = order.CreateOrder(orderEntity);
@@ -54,10 +59,10 @@ namespace OrderManagement.Controllers
                     }
                     else
                     {
-                        TempData["SuccessMsg"] = "Unable To Create Order...!";
+                        TempData["ErrorMsg"] = "Unable To Create Order...!";
                     }
                 }
-
+                //return View();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -68,6 +73,8 @@ namespace OrderManagement.Controllers
             }
 
         }
+
+
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int id)
@@ -114,5 +121,49 @@ namespace OrderManagement.Controllers
                 return View();
             }
         }
+
+
+        // Address
+        // GET: Address/Create
+        [HttpGet]
+        public ActionResult CreateAddress()
+        {
+            return View();
+        }
+
+        // POST: Address/Create
+
+        [HttpPost]
+        public ActionResult CreateAddress(AddressEntity addressEntity)
+        {
+            bool IsInserted = false;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    IsInserted = address.CreateAddress(addressEntity);
+
+                    if (IsInserted)
+                    {
+                        TempData["SuccessMsg"] = "Address Created Successfully...!";
+                    }
+                    else
+                    {
+                        TempData["ErrorMsg"] = "Unable To Create Address...!";
+                    }
+                }
+
+                //return View();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                TempData["ErrorMsg"] = ex.Message;
+                return View();
+            }
+
+        }
+
     }
 }
