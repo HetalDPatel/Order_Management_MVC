@@ -89,8 +89,9 @@ else if (TempData["ErrorMsg"] != null)
             <div class="form-group">
                 @Html.LabelFor(model => model.AddressId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.AddressId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+                    
+                    @Html.DropDownList("AddressId", new SelectList(ViewBag.data, "AddressId", "AddressId"), new {style = "width: 500px;height:30px;border-color:lightgray;border-radius: 5px;" })
+                   
                 </div>
             </div>
 
