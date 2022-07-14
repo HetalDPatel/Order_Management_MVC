@@ -1,4 +1,5 @@
 ﻿using OrderManagement.Data;
+using OrderManagement.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace OrderManagement.Controllers
     {
         Order order = new Order();
         Address address = new Address();
+
+        public bool IsInserted { get; private set; }
+        public OrderEntity orderEntity { get; private set; }
 
 
         // GET: Orders
@@ -46,7 +50,7 @@ namespace OrderManagement.Controllers
         {
             try
             {
-<<<<<<< HEAD
+
 
                 if (ModelState.IsValid)
                 {
@@ -62,10 +66,7 @@ namespace OrderManagement.Controllers
                     }
                 }
                 //return View();
-=======
-                // TODO: Add insert logic here
 
->>>>>>> parent of b196b37 (create new order function added)
                 return RedirectToAction("Index");
             }
             catch
@@ -141,7 +142,49 @@ namespace OrderManagement.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    IsInserted = address.CreateAddress(addressEntity);
+                    //IsInserted = address.CreateAddress(addressEntity);
+
+                    if (IsInserted)
+                    {
+                        TempData["SuccessMsg"] = "Address Created Successfully...!";
+                    }
+                    else
+                    {
+                        TempData["ErrorMsg"] = "Unable To Create Address...!";
+                    }
+                }
+
+                //return View();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                TempData["ErrorMsg"] = ex.Message;
+                return View();
+            }
+
+        }
+
+        
+        // GET: Order/Create
+        [HttpGet]
+        public ActionResult CreateOrder()
+        {
+            return View();
+        }
+
+        // POST: Address/Create
+
+        [HttpPost]
+        public ActionResult CreateOrder(OrderEntity orderEntity)
+        {
+            bool IsInserted = false;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    IsInserted = order.CreateOrder(orderEntity);
 
                     if (IsInserted)
                     {

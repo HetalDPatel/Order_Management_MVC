@@ -76,6 +76,12 @@ namespace OrderManagement.Data
 
             return orderList;
         }
+
+       /* public bool CreateOrder(OrderEntity orderEntity)
+        {
+            throw new NotImplementedException();
+        }
+*/
         public OrderEntity GetOrder(int id)
         {
             //OrderEntity order = new OrderEntity(ordEntity.OrderNumber, ordEntity.Customer_Name, ordEntity.Order_Date, ordEntity.Item, ordEntity.Price, ordEntity.Qty, ordEntity.Status, ordEntity.AddressItem);
@@ -86,9 +92,9 @@ namespace OrderManagement.Data
             return order; 
         }
 
-        public OrderEntity CreateOrder(OrderEntity model)
+        public bool CreateOrder(OrderEntity objOrdEntity)
         {
-<<<<<<< HEAD
+
             int id = 0;
             SqlConnection sqlConnection = new SqlConnection(ConnectionString);
             try
@@ -125,9 +131,8 @@ namespace OrderManagement.Data
             {
                 return false;
             }
-=======
-            return new OrderEntity();
->>>>>>> parent of b196b37 (create new order function added)
+
+            
         }
 
 

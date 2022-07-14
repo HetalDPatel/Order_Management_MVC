@@ -56,8 +56,9 @@ else if (TempData["ErrorMsg"] != null)
             <div class="form-group">
                 @Html.LabelFor(model => model.Order_Date, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Order_Date, new { htmlAttributes = new { @class = "form-control", placeholder = "dd/mm/yyyy" } })
                     @Html.ValidationMessageFor(model => model.Order_Date, "", new { @class = "text-danger" })
+                    
                 </div>
             </div>
 
@@ -102,9 +103,9 @@ else if (TempData["ErrorMsg"] != null)
         </div>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")

@@ -66,11 +66,11 @@ namespace OrderManagement.Data
                 SqlCommand cmd = new SqlCommand("SP_AddNewAddress", sqlConnection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@house_no", objAddEntity.HouseNo);
+               // cmd.Parameters.AddWithValue("@house_no", objAddEntity.);
                 cmd.Parameters.AddWithValue("@street", objAddEntity.Street);
-                cmd.Parameters.AddWithValue("@city", objAddEntity.City);
+               // cmd.Parameters.AddWithValue("@city", objAddEntity.c);
                 cmd.Parameters.AddWithValue("@cuntry", objAddEntity.Country);
-                cmd.Parameters.AddWithValue("@postal_code", objAddEntity.PostalCode);
+                //cmd.Parameters.AddWithValue("@postal_code", objAddEntity);
 
                 sqlConnection.Open();
                 id = cmd.ExecuteNonQuery();
