@@ -88,8 +88,48 @@ namespace OrderManagement.Data
 
         public OrderEntity CreateOrder(OrderEntity model)
         {
+<<<<<<< HEAD
+            int id = 0;
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_AddNewOrder", sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@order_no", objOrdEntity.OrderNumber);
+                cmd.Parameters.AddWithValue("@order_date", objOrdEntity.Order_Date);
+                cmd.Parameters.AddWithValue("@item", objOrdEntity.Item);
+                cmd.Parameters.AddWithValue("@qty", objOrdEntity.Qty);
+                cmd.Parameters.AddWithValue("@price_per_item", objOrdEntity.Price);
+                cmd.Parameters.AddWithValue("@customer_name", objOrdEntity.Customer_Name);
+                cmd.Parameters.AddWithValue("@address_id", objOrdEntity.AddressId);
+
+                sqlConnection.Open();
+                id = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            if (id > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+=======
             return new OrderEntity();
+>>>>>>> parent of b196b37 (create new order function added)
         }
+
 
         public OrderEntity UpdateOrder(OrderEntity model)
         {

@@ -1,23 +1,22 @@
-﻿using System;
+﻿using OrderManagement.Data.Entity;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using OrderManagement.Data.Entity;
 
 namespace OrderManagement.Data
 {
     public class Address : DataObject
     {
 
-        public Address(): base(null)
+        public Address() : base(null)
         {
             var holder = ConnectionString;
         }
 
-        public Address(SqlTransaction trans): base(trans)
+        public Address(SqlTransaction trans) : base(trans)
         {
-           
+
         }
 
         public List<AddressEntity> GetAddresses(SqlTransaction trans = null)
@@ -58,9 +57,42 @@ namespace OrderManagement.Data
             return new AddressEntity();
         }
 
-        public AddressEntity CreateAddress(AddressEntity model)
+        public bool CreateAddress(AddressEntity objAddEntity)
         {
-            return new AddressEntity();
+            int id = 0;
+            SqlConnection sqlConnection = new SqlConnection(ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SP_AddNewAddress", sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@house_no", objAddEntity.HouseNo);
+                cmd.Parameters.AddWithValue("@street", objAddEntity.Street);
+                cmd.Parameters.AddWithValue("@city", objAddEntity.City);
+                cmd.Parameters.AddWithValue("@cuntry", objAddEntity.Country);
+                cmd.Parameters.AddWithValue("@postal_code", objAddEntity.PostalCode);
+
+                sqlConnection.Open();
+                id = cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            if (id > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public AddressEntity UpdateAddress(AddressEntity model)
