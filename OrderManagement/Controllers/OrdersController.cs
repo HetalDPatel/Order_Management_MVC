@@ -138,6 +138,8 @@ namespace OrderManagement.Controllers
         public ActionResult CreateAddress(AddressEntity addressEntity)
         {
             bool IsInserted = false;
+
+           
             try
             {
                 if (ModelState.IsValid)
@@ -171,6 +173,11 @@ namespace OrderManagement.Controllers
         [HttpGet]
         public ActionResult CreateOrder()
         {
+            var addIdList = order.GetAddessId().ToList();
+            if (addIdList != null)
+            {
+                ViewBag.data = addIdList;
+            }
             return View();
         }
 
